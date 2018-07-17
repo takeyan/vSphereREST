@@ -21,7 +21,7 @@ public class App {
     public static void main(String[] args) {
 
         String user="Administrator@takeyan.xyz";
-        String passwd="XXXXXXXXX";
+        String passwd="bot06@JUN";
         App app = new App();
         String token = app.getToken(user,passwd);
 
@@ -63,13 +63,15 @@ public String getToken(String user, String passwd) {
 
         Client client = ClientBuilder.newClient();
 
-        WebTarget target = client.target("https://vcsa.takeyan.xyz/").path("rest/com/vmware/cis/session").queryParam("~method","post");
+//        WebTarget target = client.target("https://vcsa.takeyan.xyz/").path("rest/com/vmware/cis/session").queryParam("~method","post");
+        WebTarget target = client.target("https://vcsa.takeyan.xyz/").path("rest/com/vmware/cis/session");
         Invocation.Builder builder = target.request(MediaType.APPLICATION_JSON_TYPE);
         builder.header("Authorization", auth_header);
         builder.header("vmware-api-session-id", "null");
         builder.header("vmware-use-header-authn", "test");
         builder.header("Content-Type", "application/json");
-        Response response = builder.get();
+        Response response = builder.post(Entity.json(""));
+//        Response response = builder.get();
 
         String st = response.readEntity(String.class);
                 JSONObject jo = new JSONObject(st);
