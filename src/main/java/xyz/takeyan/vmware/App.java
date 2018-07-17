@@ -21,7 +21,7 @@ public class App {
     public static void main(String[] args) {
 
         String user="Administrator@takeyan.xyz";
-        String passwd="bot06@JUN";
+        String passwd="XXXXXXXXX";
         App app = new App();
         String token = app.getToken(user,passwd);
 
